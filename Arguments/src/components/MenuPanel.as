@@ -27,10 +27,11 @@ package components
 	
 	import ValueObjects.AGORAParameters;
 	
+	import classes.Language;
+	
 	import flash.events.MouseEvent;
 	
 	import mx.binding.utils.BindingUtils;
-	import mx.containers.Panel;
 	import mx.controls.Label;
 	import mx.core.DragSource;
 	import mx.core.FlexBitmap;
@@ -42,11 +43,10 @@ package components
 	
 	import spark.components.Button;
 	import spark.components.HGroup;
+	import spark.components.Panel;
 	import spark.components.VGroup;
 	
-	import classes.Language;
-	
-	public class MenuPanel extends GridPanel
+	public class MenuPanel extends Panel
 	{
 		private var _model:ArgumentTypeModel;
 		private var _agoraConstants:AGORAParameters;
@@ -101,6 +101,14 @@ package components
 			BindingUtils.bindSetter(this.setY, model, "ygrid");
 			BindingUtils.bindSetter(this.setSchemeText, model, "logicClass");
 			
+		}
+		
+		public function setX(value:int):void{
+			y = value * AGORAParameters.getInstance().gridWidth;
+		}
+		
+		public function setY(value:int):void{
+			x = value * AGORAParameters.getInstance().gridWidth;
 		}
 		
 		//------------------ Bind Setters --------------------------//
@@ -161,10 +169,10 @@ package components
 			changeSchemeBtn.label =  (model != null)?(model.logicClass != null? model.logicClass: 'Scheme') : 'Scheme';
 			changeSchemeBtn.percentWidth = 100;
 			titleDisplay.setStyle("textAlign","center");
-			//title = Language.lookup("Therefore");
+			title = Language.lookup("Therefore");
 			vgroup.addElement(changeSchemeBtn);
 			vgroup.addElement(addReasonBtn);
-			this.titleDisplay.addEventListener(MouseEvent.MOUSE_DOWN,beginDrag);
+			this.titleDisplay.addEventListener(MouseEvent.MOUSE_DOWN, beginDrag);
 			
 			
 			addReasonBtn.addEventListener(MouseEvent.CLICK, onAddReasonClicked);

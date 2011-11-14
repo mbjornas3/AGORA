@@ -9,8 +9,7 @@ package Controller.logic
 	
 	import components.ArgumentPanel;
 	import components.DynamicTextArea;
-	import components.Inference;
-	
+		
 	import flash.utils.Dictionary;
 	
 	import mx.controls.Alert;

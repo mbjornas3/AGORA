@@ -17,7 +17,6 @@ package Controller
 	import components.ArgSelector;
 	import components.ArgumentPanel;
 	import components.GridPanel;
-	import components.Inference;
 	import components.LAMWorld;
 	import components.Map;
 	import components.MenuPanel;

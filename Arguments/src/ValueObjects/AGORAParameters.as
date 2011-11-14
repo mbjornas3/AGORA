@@ -152,7 +152,7 @@ package ValueObjects
 			NETWORK_ERROR = "Unable to reach server. Please check your Internet connection...";
 			EDIT_OTHER = "You do not have the permission to edit statements created by other users";
 			
-			gridWidth = 25;
+			gridWidth = 30;
 			version = "11.9.28";
 			reference = this;
 			PROMPT_DELETE_SUPPORTED_STATEMENT = "Do you really want to delete this box and everything that leads to it? Yes / No";

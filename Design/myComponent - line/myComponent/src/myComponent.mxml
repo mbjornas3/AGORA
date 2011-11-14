@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="800" minHeight="600" xmlns:mengyun="com.mengyun.*" width="800" height="600">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			function onTextAreaChang():void{
+				resizeBG.setText(textArea.text);
+			}
+		]]>
+	</fx:Script>
+	<mengyun:myUIComponent x="10" y="20">
+		
+	</mengyun:myUIComponent>
+	
+	<mengyun:AgoraPanel id="resizeBG" x="410" y="20">
+		
+	</mengyun:AgoraPanel>
+	<s:TextArea id="textArea" x="32" y="255" width="268" change="onTextAreaChang()"/>
+</s:Application>

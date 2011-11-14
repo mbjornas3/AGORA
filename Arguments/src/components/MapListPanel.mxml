@@ -68,7 +68,7 @@
 					}
 				}
 			}
-
+			
 			protected function panel_creationCompleteHandler(event:FlexEvent):void
 			{
 				var fetchCommand:AGORAController =  AGORAController.getInstance();

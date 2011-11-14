@@ -22,13 +22,15 @@ package components
 	 */
 	
 	import ValueObjects.AGORAParameters;
+	
 	import flash.events.MouseEvent;
 	
 	import mx.controls.Alert;
+	import mx.core.UIComponent;
 	
 	import spark.components.Panel;
 	
-	public class GridPanel extends Panel
+	public class GridPanel extends UIComponent
 	{
 		public static var count:int;
 		public var gridX:int;
@@ -44,6 +46,18 @@ package components
 		override protected function createChildren():void
 		{
 			super.createChildren();
+		}
+		
+		override protected function commitProperties():void{
+			super.commitProperties();
+		}
+		
+		override protected function measure():void{
+			super.measure();
+		}
+		
+		override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void{
+			super.updateDisplayList(unscaledWidth, unscaledHeight);
 		}
 		
 		public function setX(value:int):void{

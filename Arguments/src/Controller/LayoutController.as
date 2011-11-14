@@ -30,7 +30,6 @@ package Controller
 	
 	import components.ArgumentPanel;
 	import components.GridPanel;
-	import components.Inference;
 	import components.Map;
 	import components.MenuPanel;
 	
@@ -162,6 +161,8 @@ package Controller
 			return (Math.floor(tmpX/uwidth));
 		}
 		
+		
+		/*
 		public function tempArrange(panel1:ArgumentPanel):void {
 			var currReason:ArgumentPanel = panel1 as ArgumentPanel;
 			
@@ -194,7 +195,7 @@ package Controller
 			panelList.push(panel1);
 			//components.Map(ArgumentPanel.parentMap.parent.parent.parent.parent.parent).update();
 		}
-		
+		*/
 		public function getGridSpan(pixels:int):int
 		{
 			return Math.ceil(pixels/uwidth);
