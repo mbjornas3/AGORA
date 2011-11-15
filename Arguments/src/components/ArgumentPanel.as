@@ -1,19 +1,5 @@
 package components
 {   
-	import com.mengyun.*;
-	import com.mengyun.bg3;
-	
-	import flash.events.Event;
-	import flash.events.MouseEvent;
-	import flash.text.*;
-	
-	import mx.controls.Alert;
-	import mx.controls.TextArea;
-	import mx.core.UIComponent;
-	
-	import ValueObjects.AGORAParameters;
-	
-	
 	import Controller.ArgumentController;
 	import Controller.UpdateController;
 	import Controller.ViewController;
@@ -30,6 +16,9 @@ package components
 	
 	import classes.Language;
 	
+	import com.mengyun.*;
+	import com.mengyun.bg3;
+	
 	import flash.display.Sprite;
 	import flash.display.Stage;
 	import flash.events.Event;
@@ -37,6 +26,7 @@ package components
 	import flash.events.KeyboardEvent;
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
+	import flash.text.*;
 	import flash.ui.Keyboard;
 	
 	import mx.binding.utils.BindingUtils;
@@ -46,6 +36,7 @@ package components
 	import mx.controls.Label;
 	import mx.controls.Menu;
 	import mx.controls.Text;
+	import mx.controls.TextArea;
 	import mx.controls.TextInput;
 	import mx.core.DragSource;
 	import mx.core.UIComponent;
@@ -67,7 +58,7 @@ package components
 	import spark.effects.Resize;
 	import spark.layouts.HorizontalAlign;
 	import spark.layouts.HorizontalLayout;
-	import spark.layouts.VerticalLayout
+	import spark.layouts.VerticalLayout;
 	
 	
 	public class ArgumentPanel extends GridPanel //Grid Panel extends UIComponent
@@ -133,21 +124,7 @@ package components
 		
 		public function ArgumentPanel()
 		{			
-			tmp_top=new bg3_top();
-			tmp_top.x=0;
-			tmp_top.y=0;
 			
-			tmp_middle=new bg3_middle();
-			tmp_middle.x=6;
-			tmp_middle.y=tmp_top.height;
-			
-			tmp_buttom=new bg3_buttom();
-			tmp_buttom.x=6;
-			tmp_buttom.y=tmp_top.height+tmp_middle.height;
-			
-			closer=new bg_close();
-			
-			downer=new Triangle_down();
 			
 			_startx = 30;
 			_starty = 30;
@@ -165,27 +142,7 @@ package components
 			
 			inputs = new Vector.<DynamicTextArea>;
 			
-			closer.x=4;
-			closer.y=4;
-			closer.addEventListener(MouseEvent.CLICK,closeClick);
 			
-			downer.x=227;
-			downer.y=tmp_top.height+tmp_middle.height+22;
-			downer.width=15;
-			downer.height=10;
-			downer.addEventListener(MouseEvent.CLICK,downClick);
-			
-			_text=new TextField();
-			_text.selectable=false;
-			_text.x=30;
-			_text.y=40;
-			_text.width=260;
-			_text.height=80; 
-			_text.multiline=true;
-			_text.wordWrap=true;
-			_text.autoSize=TextFieldAutoSize.LEFT;
-			
-		
 			minHeight = 100;
 			state = DISPLAY;
 			super();
@@ -413,11 +370,63 @@ type="TopLevel"/></root>;
 		}
 		
 		override protected function createChildren():void{
+			tmp_top=new bg3_top();
+			tmp_top.x=0;
+			tmp_top.y=0;
+			
+			tmp_middle=new bg3_middle();
+			tmp_middle.x=6;
+			tmp_middle.y=tmp_top.height;
+			
+			tmp_buttom=new bg3_buttom();
+			tmp_buttom.x=6;
+			tmp_buttom.y=tmp_top.height+tmp_middle.height;
+			
+			closer=new bg_close();
+			
+			downer=new Triangle_down();
+			
+			closer.x=4;
+			closer.y=4;
+			closer.addEventListener(MouseEvent.CLICK,closeClick);
+			
+			downer.x=227;
+			downer.y=tmp_top.height+tmp_middle.height+22;
+			downer.width=15;
+			downer.height=10;
+			downer.addEventListener(MouseEvent.CLICK,downClick);
+			
+			_text=new TextField();
+			_text.selectable=false;
+			_text.x=30;
+			_text.y=40;
+			_text.width=260;
+			_text.height=80; 
+			_text.multiline=true;
+			_text.wordWrap=true;
+			_text.autoSize=TextFieldAutoSize.LEFT;
+			
+			BindingUtils.bindSetter(this.setDisplayStatement, model, ['statement','text']);
+			
+			
+			
 			this.addChild(tmp_top);
 			this.addChild(tmp_middle);
 			this.addChild(tmp_buttom);			
 			this.addChild(closer);
 			this.addChild(downer);
+		}
+		
+		override protected function commitProperties():void{
+			super.commitProperties();
+			try{
+				this.removeChild(text);
+			}
+			catch(exception:Error){
+			}
+			if(state == DISPLAY){
+				this.addChild(text);
+			}
 		}
 		
 		override protected function measure():void{
