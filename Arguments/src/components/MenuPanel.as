@@ -32,7 +32,6 @@ package components
 	import flash.events.MouseEvent;
 	
 	import mx.binding.utils.BindingUtils;
-	import mx.containers.Panel;
 	import mx.controls.Label;
 	import mx.core.DragSource;
 	import mx.core.FlexBitmap;
@@ -44,9 +43,10 @@ package components
 	
 	import spark.components.Button;
 	import spark.components.HGroup;
+	import spark.components.Panel;
 	import spark.components.VGroup;
 	
-	public class MenuPanel extends GridPanel
+	public class MenuPanel extends Panel
 	{
 		private var _model:ArgumentTypeModel;
 		private var _agoraConstants:AGORAParameters;
@@ -102,6 +102,13 @@ package components
 			BindingUtils.bindSetter(this.setY, model, "ygrid");
 			BindingUtils.bindSetter(this.setSchemeText, model, "logicClass");
 			
+		}
+		public function setX(value:int):void{
+			y = value * AGORAParameters.getInstance().gridWidth;
+		}
+		
+		public function setY(value:int):void{
+			x = value * AGORAParameters.getInstance().gridWidth;
 		}
 		
 		//------------------ Bind Setters --------------------------//

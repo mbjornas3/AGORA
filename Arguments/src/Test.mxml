@@ -9,6 +9,7 @@
 	</fx:Declarations>	
 	<fx:Script>
 		<![CDATA[
+			import components.ArgumentPanel;
 			import components.InfoBox;
 			
 			import mx.events.FlexEvent;
@@ -21,8 +22,11 @@
 				infoBox.boxWidth = 300;
 				infoBox.x = 50;
 				infoBox.y = 30;
-				
 				addElement(infoBox);
+				var argPanel:ArgumentPanel = new ArgumentPanel;
+				addElement(argPanel);
+				argPanel.displayTxt.text = "whatever I type here, appears there. What would u say?";
+				
 			}
 
 		]]>

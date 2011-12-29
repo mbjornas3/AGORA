@@ -20,6 +20,9 @@ package ValueObjects
 		
 		
 		
+		//Menu data
+		public var CONSTRUCT_ARG_DATA:XML;
+		
 		//Error Codes TODO: Enter these in the Languages.xml
 		public var ERROR_106:String;
 		public var ERROR_103:String;
@@ -154,7 +157,7 @@ package ValueObjects
 			deleteURL = "http://agora.gatech.edu/rework/remove.php";
 			insertURL = "http://agora.gatech.edu/rework/insert.php";
 			loadMapURL = "http://agora.gatech.edu/rework/load_map.php";
-			nameUpdateURL = "http://agora.gatech.edu/rework/mapinfo.php";	
+			nameUpdateURL = "http://agora.gatech.edu/release/mapinfo.php";	
 			initialize();		
 		}
 		
@@ -199,6 +202,7 @@ package ValueObjects
 			SAVE_AS = Language.lookup('SaveMapAs');
 			ADD_SUPPORTING_STATEMENT = Language.lookup('AddArgument');
 			ADD_OBJECTION = Language.lookup('AddObjection');
+			CONSTRUCT_ARG_DATA = <root><menuitem label={Language.lookup("AddAnotherReason")} type="TopLevel"/><menuitem label={Language.lookup("AddArg")} type="TopLevel"/></root>;
 		}
 		
 		public static function getInstance():AGORAParameters{

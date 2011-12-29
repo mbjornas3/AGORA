@@ -22,13 +22,15 @@ package components
 	 */
 	
 	import ValueObjects.AGORAParameters;
+	
 	import flash.events.MouseEvent;
 	
 	import mx.controls.Alert;
+	import mx.core.UIComponent;
 	
 	import spark.components.Panel;
 	
-	public class GridPanel extends Panel
+	public class GridPanel extends UIComponent
 	{
 		public static var count:int;
 		public var gridX:int;
@@ -36,10 +38,6 @@ package components
 		public function GridPanel()
 		{
 			super();
-			this.setStyle("dropShadowVisible",false);
-			this.setStyle("cornerRadius",4);
-			this.setStyle("chromeColor",uint("0xffffff"));
-			this.setStyle("backgroundColor",uint("0x999966"));
 		}
 		override protected function createChildren():void
 		{
